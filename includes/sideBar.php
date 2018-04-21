@@ -1,6 +1,27 @@
 <div class="col-md-4">
 
-<?php echo $_POST['search']; ?>
+<?php  
+ if (isSet($_POST['submit'])) {
+    $search = $_POST['search']; 
+
+    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+    $searchQuery = mysqli_query($connect, $query);
+
+    if (!$searchQuery) {
+        die (mysqli_error($connect));
+    }
+    $count = mysqli_num_rows($searchQuery);
+    if ($count == 0) {
+        echo "<h1>NO RESULTS FOR YOU!!!</h1>";
+    } else {
+        $row = mysqli_fetch_assoc($searchQuery);
+        echo $row['post_tags'];
+    }
+ }
+
+
+
+?>
 
 
                 <!-- Blog Search Well -->
@@ -10,7 +31,7 @@
                     <div class="input-group">
                         <input name = "search" type="text" class="form-control">
                         <span class="input-group-btn">
-                            <button name = "submit" class="btn btn-default" type="button">
+                            <button name = "submit" class="btn btn-default" type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
