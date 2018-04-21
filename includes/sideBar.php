@@ -1,16 +1,21 @@
 <div class="col-md-4">
 
+<?php echo $_POST['search']; ?>
+
+
                 <!-- Blog Search Well -->
                 <div class="well">
                     <h4>Blog Search</h4>
+                    <form action="" method = "post">
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input name = "search" type="text" class="form-control">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                            <button name = "submit" class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
                     </div>
+                    </form> <!-- form -->
                     <!-- /.input-group -->
                 </div>
 
