@@ -78,7 +78,7 @@
                 <hr>
                 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, voluptates, voluptas dolore ipsam cumque quam veniam accusantium laudantium adipisci architecto itaque dicta aperiam maiores provident id incidunt autem. Magni, ratione.  Don't mind me, just making some changes so I can test a merge...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, voluptates, voluptas dolore ipsam cumque quam veniam accusantium laudantium adipisci architecto itaque dicta aperiam maiores provident id incidunt autem. Magni, ratione.  Don't mind me, just making some changes so I can test a merge...ok some more changes now...</p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
