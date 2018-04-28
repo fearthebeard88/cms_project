@@ -50,6 +50,34 @@
                             </div>
                             </form>
 
+                            <form action="categories.php" method = "post">
+                            <div class="form-group">
+                            <label for="cat_title">Edit Category</label>
+
+                            <?php
+                            if (isSet($_GET['edit'])) {
+                                $cat_id = $_GET['edit'];
+                            $query = "SELECT * FROM categories WHERE cat_id = $cat_id ";
+                            $find_cat = mysqli_query($connect, $query);
+                            while($row = mysqli_fetch_assoc($find_cat)) {
+                                $cat_id = $row['cat_id'];
+                                $cat_title = $row['cat_title'];
+                                ?>
+                                <input type = "text" class = "form-control" name = "cat_title" value = "<?php if (isSet($cat_title)) {
+                                echo $cat_title;    
+                                } ?>">
+
+                                <?php
+                            }
+                            } ?>
+
+                            
+                            </div>
+                            <div class="form-group">
+                            <input type = "submit" class = "btn btn-primary" name = "update" value = "Update Category">
+                            </div>
+                            </form>
+
                         </div>
 
                         <div class="col-xs-6">
@@ -66,6 +94,8 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Category Title</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,8 +109,11 @@
                                 echo "<td>{$cat_id}</td>";
                                 echo "<td>{$cat_title}</td>";
                                 echo "<td><a href = 'categories.php?delete={$cat_id}'>Delete</a></td>";
+                                echo "<td><a href = 'categories.php?edit={$cat_id}'>Edit</a></td>";
                                 echo "</tr>";
                             }
+                            
+                            
 
                             if (isSet($_GET['delete'])) {
                                 $the_cat_id = $_GET['delete'];
