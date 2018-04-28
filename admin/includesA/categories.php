@@ -21,7 +21,25 @@
 
                         <div class="col-xs-6">
                         
-                            <form action="">
+                        <?php
+
+                        if (isSet($_POST['submit'])) {
+                            $category = $_POST['cat_title'];
+                            if ($category == "" || empty($category)) {
+                                echo "Here's how this goes...You fill out the field, THEN click the button...dipshit...";
+                            } else {
+                                $query = "INSERT INTO categories(cat_title) ";
+                                $query .= "VALUE('{$category}') ";
+                                $catAdd = mysqli_query($connect, $query);
+                                if (!$catAdd) {
+                                    die(mysqli_error($connect));
+                                }
+                            }
+                        }
+
+                        ?>
+
+                            <form action="categories.php" method = "post">
                             
                             <div class="form-group">
                             <label for="cat_title">Add Category</label>
@@ -57,8 +75,18 @@
                             while ($row = mysqli_fetch_assoc($select_cat)) {
                                 $cat_title = $row['cat_title'];
                                 $cat_id = $row['cat_id'];
-                                echo "<tr><td>{$cat_id}</td>";
-                                echo "<td>{$cat_title}</td></tr>";
+                                echo "<tr>";
+                                echo "<td>{$cat_id}</td>";
+                                echo "<td>{$cat_title}</td>";
+                                echo "<td><a href = 'categories.php?delete={$cat_id}'>Delete</a></td>";
+                                echo "</tr>";
+                            }
+
+                            if (isSet($_GET['delete'])) {
+                                $the_cat_id = $_GET['delete'];
+                            $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
+                            $delete = mysqli_query($connect, $query);
+                            header("Location: categories.php");
                             }
 
                             ?>
