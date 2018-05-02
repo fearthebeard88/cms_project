@@ -51,11 +51,7 @@
 
                         <div class="col-xs-6">
 
-                        <?php
-
-                        find_all_cat();
-
-                        ?>
+                        
                         
                         <table class = "table table-bordered table-hover">
                             <thead>
@@ -67,21 +63,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                            <?php find_all_cat() ?>
                             <?php
-
-                            while ($row = mysqli_fetch_assoc($select_cat)) {
-                                $cat_title = $row['cat_title'];
-                                $cat_id = $row['cat_id'];
-                                echo "<tr>";
-                                echo "<td>{$cat_id}</td>";
-                                echo "<td>{$cat_title}</td>";
-                                echo "<td><a href = 'categories.php?delete={$cat_id}'>Delete</a></td>";
-                                echo "<td><a href = 'categories.php?edit={$cat_id}'>Edit</a></td>";
-                                echo "</tr>";
-                            }
-                            
-                            
 
                             if (isSet($_GET['delete'])) {
                                 $the_cat_id = $_GET['delete'];
