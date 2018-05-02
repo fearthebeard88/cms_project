@@ -63,17 +63,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php find_all_cat() ?>
-                            <?php
-
-                            if (isSet($_GET['delete'])) {
-                                $the_cat_id = $_GET['delete'];
-                            $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
-                            $delete = mysqli_query($connect, $query);
-                            header("Location: categories.php");
-                            }
-
-                            ?>
+                            <?php find_all_cat(); ?>
+                            <?php delete_cat(); ?>
                             </tbody>
                         </table>
 

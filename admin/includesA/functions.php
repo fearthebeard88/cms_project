@@ -20,7 +20,7 @@ function find_all_cat() {
     global $connect;
     $query = "SELECT * FROM categories ";
     $select_cat = mysqli_query($connect, $query);
-    
+
         while ($row = mysqli_fetch_assoc($select_cat)) {$cat_title = $row['cat_title'];
               $cat_id = $row['cat_id'];
                 echo "<tr>";
@@ -30,5 +30,15 @@ function find_all_cat() {
                 echo "<td><a href = 'categories.php?edit={$cat_id}'>Edit</a></td>";
                 echo "</tr>";
                         }
+}
+
+function delete_cat() {
+    global $connect;
+    if (isSet($_GET['delete'])) {
+        $the_cat_id = $_GET['delete'];
+    $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
+    $delete = mysqli_query($connect, $query);
+    header("Location: categories.php");
+    }
 }
 ?>
