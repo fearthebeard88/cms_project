@@ -36,15 +36,35 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>N</td>
-                                    <td>Someone important...</td>
-                                    <td>Something important...</td>
-                                    <td>Meh</td>
-                                    <td>ill get around to it</td>
-                                    <td>i love pictures!</td>
-                                    <td>tag?  sweet!</td>
-                                    <td>say it...I dare you...</td>
-                                   <td>that one time at band camp...</td>
+<?php
+
+$show_all = "SELECT * FROM posts ";
+$query = mysqli_query($connect, $show_all);
+
+while ($row = mysqli_fetch_assoc($query)) {
+    $id = $row['post_id'];
+    $author = $row['post_author'];
+    $title = $row['post_title'];
+    $category = $row['post_cat_id'];
+    $status = $row['post_status'];
+    $image = $row['post_img'];
+    $tags = $row['post_tags'];
+    $comments = $row['post_comment_count'];
+    $date = $row['post_date'];
+
+    echo "<tr>";
+    echo "<td>$id</td>";
+    echo "<td>$author</td>";
+    echo "<td>$title</td>";
+    echo "<td>$category</td>";
+    echo "<td>$status</td>";
+    echo "<td>$image</td>";
+    echo "<td>$tags</td>";
+    echo "<td>$comments</td>";
+    echo "<td>$date</td>";
+    echo "</tr>";
+}
+?>
                                 </tr>
                             </tbody>
                         </table>
