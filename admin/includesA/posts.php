@@ -58,7 +58,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     echo "<td>$title</td>";
     echo "<td>$category</td>";
     echo "<td>$status</td>";
-    echo "<td>$image</td>";
+    echo "<td><img width = '100' src = '../../images/$image'></td>";
     echo "<td>$tags</td>";
     echo "<td>$comments</td>";
     echo "<td>$date</td>";
