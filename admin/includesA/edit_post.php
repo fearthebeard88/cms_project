@@ -1,30 +1,3 @@
-<?php 
-
-if(isSet($_POST['create'])) {
-    $post_title = $_POST['title'];
-    $post_author = $_POST['author'];
-    $post_category_id = $_POST['post_category_id'];
-    $post_status = $_POST['status'];
-    $post_image = $_FILES['image']['name'];
-    $post_image_temp = $_FILES['image']['tmp_name'];
-    $post_tags = $_POST['tags'];
-    $post_content = $_POST['content'];
-    $post_date = date('d-m-y');
-    $post_comment_count = 4;
-
-    move_uploaded_file($post_image_temp, "../../images/$post_image");
-
-    $query = "INSERT INTO posts(post_cat_id, post_title, post_author, post_date, post_img, post_content, post_tags, post_comment_count, post_status) ";
-    $query .= "VALUES('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_tags}', '{$post_comment_count}', '{$post_status}', '{$post_content}' ) ";
-    $create = mysqli_query($connect, $query);
-    echo "Post Added";
-
-    why($create);
-}
-
-
-?>
-
 <form action="" method = "post" enctype = "multipart/form-data">
 
     <div class="form-group">

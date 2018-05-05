@@ -57,6 +57,7 @@ function delete_post() {
         $query = "DELETE FROM posts WHERE post_id = {$delete} ";
         $delete_query = mysqli_query($connect, $query);
         header("Location: posts.php");
+        echo "Post Deleted";
     }
 }
 ?>

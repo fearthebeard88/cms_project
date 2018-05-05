@@ -41,6 +41,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     echo "<td>$comments</td>";
     echo "<td>$date</td>";
     echo "<td><a href = 'posts.php?delete=$id'>Delete</a></td>";
+    echo "<td><a href = 'posts.php?edit=$id'>Edit</a></td>";
     echo "</tr>";
 }
 ?>
