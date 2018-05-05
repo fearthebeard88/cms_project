@@ -29,11 +29,12 @@ if (isSet($_GET['source'])) {
 }
 
 switch($source) {
-    case "something" :
-    echo "something";
-    break;
-    default:
+    case "add_post" :
     include "add_post.php";
+    break;
+    
+    default:
+    include "view_all_posts.php";
     break;
 }
 
