@@ -41,4 +41,11 @@ function delete_cat() {
     header("Location: categories.php");
     }
 }
+
+function why($result) {
+    global $connect;
+    if(!$result) {
+        die(mysqli_error($connect));
+    }
+}
 ?>
