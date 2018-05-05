@@ -33,6 +33,10 @@ switch($source) {
     include "add_post.php";
     break;
 
+    case "edit_post" :
+    include "edit_post.php";
+    break;
+
     default:
     include "view_all_posts.php";
     break;

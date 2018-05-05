@@ -40,8 +40,8 @@ while ($row = mysqli_fetch_assoc($query)) {
     echo "<td>$tags</td>";
     echo "<td>$comments</td>";
     echo "<td>$date</td>";
+    echo "<td><a href = 'posts.php?source=edit_post&p_id=$id'>Edit</a></td>";
     echo "<td><a href = 'posts.php?delete=$id'>Delete</a></td>";
-    echo "<td><a href = 'posts.php?edit=$id'>Edit</a></td>";
     echo "</tr>";
 }
 ?>
