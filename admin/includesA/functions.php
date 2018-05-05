@@ -48,4 +48,15 @@ function why($result) {
         die(mysqli_error($connect));
     }
 }
+
+function delete_post() {
+    global $connect;
+    if (isSet($_GET['delete'])) {
+        $delete = $_GET['delete'];
+    
+        $query = "DELETE FROM posts WHERE post_id = {$delete} ";
+        $delete_query = mysqli_query($connect, $query);
+        header("Location: posts.php");
+    }
+}
 ?>

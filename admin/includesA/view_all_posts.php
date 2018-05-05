@@ -40,9 +40,16 @@ while ($row = mysqli_fetch_assoc($query)) {
     echo "<td>$tags</td>";
     echo "<td>$comments</td>";
     echo "<td>$date</td>";
+    echo "<td><a href = 'posts.php?delete=$id'>Delete</a></td>";
     echo "</tr>";
 }
 ?>
                                 </tr>
                             </tbody>
                         </table>
+
+<?php
+
+delete_post();
+
+?>
