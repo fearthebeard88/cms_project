@@ -21,13 +21,13 @@
                         </h1>
 
 <?php
-
+// if the key source is set, assign it to a variable
 if (isSet($_GET['source'])) {
     $source = $_GET['source'];
 } else {
     $source = '';
 }
-
+// routing to certain pages based off queries in HTML
 switch($source) {
     case "add_post" :
     include "add_post.php";

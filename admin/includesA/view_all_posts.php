@@ -15,10 +15,10 @@
                             <tbody>
                                 <tr>
 <?php
-
+// getting everything from table called posts
 $query = "SELECT * FROM posts ";
 $show_all = mysqli_query($connect, $query);
-
+// assigning everything returned from posts into variables
 while ($row = mysqli_fetch_assoc($show_all)) {
     $id = $row['post_id'];
     $author = $row['post_author'];
@@ -29,12 +29,12 @@ while ($row = mysqli_fetch_assoc($show_all)) {
     $tags = $row['post_tags'];
     $comments = $row['post_comment_count'];
     $date = $row['post_date'];
-
+// putting variables into table format 
     echo "<tr>";
     echo "<td>$id</td>";
     echo "<td>$author</td>";
     echo "<td>$title</td>";
-
+// selecting all from table categories where the cat_id = category from posts table
 $query = "SELECT * FROM categories WHERE cat_id = {$category} ";
 $select_cat_id = mysqli_query($connect, $query);
 

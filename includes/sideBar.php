@@ -17,7 +17,7 @@
                 </div>
 
 <?php 
-
+// select all from table categories
 $query = "SELECT * FROM categories ";
 $selectQuery = mysqli_query($connect, $query);
 
@@ -29,8 +29,10 @@ $selectQuery = mysqli_query($connect, $query);
                         <div class="col-lg-12">
                             <ul class="list-unstyled">
                            <?php
+                           // assigning database entries to associative array
                             while ($row = mysqli_fetch_assoc($selectQuery)) {
                         $cat_title = $row['cat_title'];
+                        // using variable keyed to categories to set up a query for HTML
                         $cat_id = $row['cat_id'];
                                 echo "<li><a href = 'category.php?category=$cat_id'>{$cat_title}</a></li>"; 
 } ?>

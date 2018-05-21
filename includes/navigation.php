@@ -18,8 +18,10 @@
                 <ul class="nav navbar-nav">
 
                     <?php
+                    // select all from table categories
                     $query = "SELECT * FROM categories ";
                     $selectCat = mysqli_query($connect, $query);
+                    // assigning values from database into array
                     while ($row = mysqli_fetch_assoc($selectCat)) {
                        $cat_title = $row['cat_title'];
                         echo "<li><a href = '#'>{$cat_title}</a></li>";

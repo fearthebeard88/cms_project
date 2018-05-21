@@ -13,10 +13,10 @@
             <div class="col-md-8">
 
             <?php
-
+            // selecting all from posts table
             $query = "SELECT * FROM posts ";
             $select_all_posts_query = mysqli_query($connect, $query);
-
+            // sorting the array returned from the database
             while ($row = mysqli_fetch_assoc($select_all_posts_query)) {
                 $post_id = $row['post_id'];
                 $post_title = $row['post_title'];
@@ -32,7 +32,7 @@
                 </h1>
 
                 <!-- First Blog Post -->
-                <h2>
+                <h2><!--using the database entries to use an HTTP query -->
                     <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
                 </h2>
                 <p class="lead">

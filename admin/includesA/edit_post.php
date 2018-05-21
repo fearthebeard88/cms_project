@@ -1,12 +1,12 @@
 <?php
-
+// if GET request key p_id is set, assign it to a variable
 if (isSet($_GET['p_id'])) {
     $post_id = $_GET['p_id'];
 }
-
+// select all from table posts where post_id = $post_id
 $show_all = "SELECT * FROM posts WHERE post_id = {$post_id} ";
 $query = mysqli_query($connect, $show_all);
-
+// assigning database values into variables
 while ($row = mysqli_fetch_assoc($query)) {
     $id = $row['post_id'];
     $author = $row['post_author'];
@@ -19,10 +19,10 @@ while ($row = mysqli_fetch_assoc($query)) {
     $date = $row['post_date'];
     $content = $row['post_content'];
 }
-
+// if submit button named create is POSTed, run query to select all from table posts where post_id = $post_id
 if (isSet($_POST['create'])) {
 $query = "SELECT * FROM posts WHERE post_id = {$post_id} ";
-
+// assigning values posted from form into variables
 $post_title = $_POST['title'];
 $post_author = $_POST['author'];
 $post_category_id = $_POST['post_category'];
@@ -33,9 +33,9 @@ $post_tags = $_POST['tags'];
 $post_content = $_POST['content'];
 $post_date = date('d-m-y');
 $post_comment_count = 4;
-
+// moving file from temp position into permanent position
 move_uploaded_file($post_image_temp, "../../images/$post_image");
-
+// if there is no file, return the one from the database
 if (empty($post_image)) {
     $query = "SELECT * FROM posts WHERE post_id = $post_id ";
 
@@ -45,7 +45,7 @@ if (empty($post_image)) {
         $post_image = $row['post_img'];
     }
 }
-
+// updating database with new values from form
 $query = "UPDATE posts SET ";
 $query .= "post_title = '{$post_title}', ";
 $query .= "post_author = '{$post_author}', ";
@@ -74,18 +74,19 @@ why($update);
         <select name = "post_category" id = "post_category">
 
             <?php
+            // select all from table categories
             $query = "SELECT * FROM categories ";
             $select = mysqli_query($connect, $query);
 
             why($select);
-
+            // assigning database entries to an array
             while ($row = mysqli_fetch_assoc($select)) {
                 $cat_id = $row['cat_id'];
                 $cat_title = $row['cat_title'];
-
+                // drop down menu for categories
                 echo "<option value = '{$cat_id}'>{$cat_title}</option>";
             }
-
+            // form is pre loaded with current posts from database
             ?>
         </select>
     </div>
