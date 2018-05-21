@@ -14,22 +14,24 @@
 
             <?php
 
-  
+  // if POST 'submit' is set, assign POST 'search' to a variable
 if (isSet($_POST['submit'])) {
    $search = strtolower($_POST['search']); 
 
-
+// select all from table posts where post_tags contain the pattern held by $search.  the % looks for patterns anywhere in the value.
    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
    $searchQuery = mysqli_query($connect, $query);
-
+// if the query from the database fails, kills the code
    if (!$searchQuery) {
        die (mysqli_error($connect));
    }
+   // returns the number of rows returned by the query and assigns it to a variable
    $count = mysqli_num_rows($searchQuery);
    if ($count == 0) {
+       // if there are no rows returned, enjoy my sense of humor again ;)
        echo "<h1>NO RESULTS FOR YOU!!!</h1>";
    } else {
-    
+    // assigns the rows returned by query into array
     while ($row = mysqli_fetch_assoc($searchQuery)) {
         $post_title = $row['post_title'];
         $post_author = $row['post_author'];

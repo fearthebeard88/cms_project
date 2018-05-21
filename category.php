@@ -13,20 +13,21 @@
             <div class="col-md-8">
 
             <?php
-
+            // if GET 'category' is set, assign the value to a variable
             if(isSet($_GET['category'])) {
                 $post_cat = $_GET['category'];
             }
-
+            // select all from table posts where post_cat_id = $post_cat
             $query = "SELECT * FROM posts WHERE post_cat_id = {$post_cat} ";
             $select_all_posts_query = mysqli_query($connect, $query);
-
+            // assigning database values into array
             while ($row = mysqli_fetch_assoc($select_all_posts_query)) {
                 $post_id = $row['post_id'];
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
                 $post_img = $row['post_img'];
+                // displays an abbreviated version of the post content
                 $post_content = substr($row['post_content'], 0, 100);
                 
                 ?>

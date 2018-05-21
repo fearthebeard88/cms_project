@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php
+// starts output buffering...more to come when i actually understand what that means lol...
+ ob_start(); ?>
 <?php include "../../includes/db.php"; ?>
 <?php include "functions.php"; ?>
 
