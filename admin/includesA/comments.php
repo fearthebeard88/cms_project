@@ -38,7 +38,7 @@ switch($source) {
     break;
 
     default:
-    include "../../includes/view_all_comments.php";
+    include "view_all_comments.php";
     break;
 }
 
