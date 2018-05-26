@@ -47,12 +47,19 @@ while ($row = mysqli_fetch_assoc($show_all)) {
    
     echo "<td>$email</td>";
     echo "<td>$status</td>";
-    echo "<td>Post title</td>";
+
+    $query = "SELECT * FROM posts WHERE post_id = $response ";
+    $post_id_query = mysqli_query($connect, $query);
+    while ($row = mysqli_fetch_assoc($post_id_query)) {
+            $post_id = $row['post_id'];
+            $post_title = $row['post_title'];
+                echo "<td><a href = '../../post.php?p_id=$post_id'>$post_title</a></td>";
+    }
+    
     echo "<td>$date</td>";
-    echo "<td><a href = 'posts.php?source=edit_post&p_id=$id'>Approve</a></td>";
-    echo "<td><a href = 'posts.php?source=edit_post&p_id=$id'>Unapprove</a></td>";
-    echo "<td><a href = 'posts.php?source=edit_post&p_id=$id'>Edit</a></td>";
-    echo "<td><a href = 'posts.php?delete=$id'>Delete</a></td>";
+    echo "<td><a href = 'comments.php?approve=$id'>Approve</a></td>";
+    echo "<td><a href = 'comments.php?unapprove=$id'>Unapprove</a></td>";
+    echo "<td><a href = 'comments.php?delete=$id'>Delete</a></td>";
     echo "</tr>";
 }
 ?>
@@ -62,6 +69,28 @@ while ($row = mysqli_fetch_assoc($show_all)) {
 
 <?php
 
-delete_post();
+if (isSet($_GET['delete'])) {
+    $id = $_GET['delete'];
+
+$query = "DELETE FROM comments WHERE comment_id = {$id} ";
+$delete = mysqli_query($connect, $query);
+header("Location: comments.php");
+}
+
+if (isSet($_GET['unapprove'])) {
+    $id = $_GET['unapprove'];
+
+    $query = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id = $id ";
+    $unapprove = mysqli_query($connect, $query);
+    header("Location: comments.php");
+}
+
+if (isSet($_GET['approve'])) {
+    $id = $_GET['approve'];
+
+    $query = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id = $id ";
+    $approve = mysqli_query($connect, $query);
+    header("Location: comments.php");
+}
 
 ?>
