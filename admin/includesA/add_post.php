@@ -11,12 +11,12 @@ if(isSet($_POST['create'])) {
     $post_tags = $_POST['tags'];
     $post_content = $_POST['content'];
     $post_date = date('d-m-y');
-    $post_comment_count = 4;
+
     // function to move a file from a temporary holding spot, into a more permanent spot
     move_uploaded_file($post_image_temp, "../../images/$post_image");
     // adding into posts table
-    $query = "INSERT INTO posts(post_cat_id, post_title, post_author, post_date, post_img, post_content, post_tags, post_comment_count, post_status) ";
-    $query .= "VALUES('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_tags}', '{$post_comment_count}', '{$post_status}', '{$post_content}' ) ";
+    $query = "INSERT INTO posts(post_cat_id, post_title, post_author, post_date, post_img, post_content, post_tags, post_status) ";
+    $query .= "VALUES('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_tags}', '{$post_status}', '{$post_content}' ) ";
     $create = mysqli_query($connect, $query);
     echo "Post Added";
 

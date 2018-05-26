@@ -24,6 +24,11 @@
                 $post_date = $row['post_date'];
                 $post_img = $row['post_img'];
                 $post_content = substr($row['post_content'], 0, 100);
+                $post_status = $row['post_status'];
+
+                if ($post_status !== 'Published') {
+                    echo "<h1 class = 'text-center'>No Posts Here</h1>";
+                } else {
                 
                 ?>
                 <h1 class="page-header">
@@ -46,7 +51,7 @@
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
-            <?php } ?>
+            <?php } } ?>
 
                 <hr>
 

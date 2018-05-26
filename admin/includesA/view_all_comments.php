@@ -18,6 +18,7 @@
 <?php
 // getting everything from table called comments
 $query = "SELECT * FROM comments ";
+$query .= "ORDER BY comment_date DESC ";
 $show_all = mysqli_query($connect, $query);
 // assigning everything returned from comments into variables
 while ($row = mysqli_fetch_assoc($show_all)) {
