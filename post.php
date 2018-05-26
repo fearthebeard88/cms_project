@@ -1,5 +1,6 @@
 <?php include "includes/db.php"; ?>
 <?php include "includes/header.php"; ?>
+<?php include "admin/includesA/functions.php"; ?>
 <body>
 
     <!-- Navigation -->
@@ -56,11 +57,16 @@
               <?php
 
               if (isSet($_POST['create_comment'])) {
+
                   $comment_author = $_POST['comment_author'];
                   $comment_email = $_POST['comment_email'];
-                  $comment = $_POST['comment_content'];
+                  $comment_content = $_POST['comment_content'];
 
-                  echo $comment_author;
+                  $query = "INSERT INTO comments (comment_post_id, comment_author, comment_status, comment_date, comment_email, comment_content) ";
+                  $query .= "VALUES ($post_id, '{$comment_author}', 'unapproved', now(), '{$comment_email}', '{$comment_content}') ";
+
+                  $add_comment = mysqli_query($connect, $query);
+                  why($add_comment);
               }
 
               ?>
