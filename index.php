@@ -14,9 +14,14 @@
 
             <?php
             // selecting all from posts table
-            $query = "SELECT * FROM posts ";
+            $query = "SELECT * FROM posts WHERE post_status = 'Published' ";
             $select_all_posts_query = mysqli_query($connect, $query);
             // sorting the array returned from the database
+
+            if (mysqli_num_rows($select_all_posts_query) == 0) {
+                echo "<h1 class = 'text-center'>No Posts Here</h1>";
+            }
+
             while ($row = mysqli_fetch_assoc($select_all_posts_query)) {
                 $post_id = $row['post_id'];
                 $post_title = $row['post_title'];
@@ -25,10 +30,6 @@
                 $post_img = $row['post_img'];
                 $post_content = substr($row['post_content'], 0, 100);
                 $post_status = $row['post_status'];
-
-                if ($post_status !== 'Published') {
-                    echo "<h1 class = 'text-center'>No Posts Here</h1>";
-                } else {
                 
                 ?>
                 <h1 class="page-header">
@@ -51,7 +52,7 @@
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
-            <?php } } ?>
+            <?php }  ?>
 
                 <hr>
 

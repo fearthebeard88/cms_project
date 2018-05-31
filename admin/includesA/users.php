@@ -29,11 +29,11 @@ if (isSet($_GET['source'])) {
 }
 // routing to certain pages based off queries in HTML
 switch($source) {
-    case "add_post" :
+    case "add_user" :
     include "add_user.php";
     break;
 
-    case "edit_post" :
+    case "edit_user" :
     include "edit_user.php";
     break;
 
