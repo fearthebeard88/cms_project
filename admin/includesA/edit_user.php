@@ -116,3 +116,24 @@ why($update);
     </div>
 
 </form>
+
+<div class="form-group">
+        <select name = "role" id = "role">
+
+            <?php
+            // select all from table categories
+            $query = "SELECT * FROM users ";
+            $select = mysqli_query($connect, $query);
+
+            why($select);
+            // assigning values from query into an array and assigning them into variables
+            while ($row = mysqli_fetch_assoc($select)) {
+                $user_id = $row['user_id'];
+                $role = $row['role'];
+                // drop down menu to hold categories returned from database
+                echo "<option value = '{$user_id}'>{$role}</option>";
+            }
+
+            ?>
+        </select>
+    </div>

@@ -1,39 +1,42 @@
 <table class = "table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Author</th>
-                                    <th>Comments</th>
+                                    <th>User Id</th>
+                                    <th>Username</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
                                     <th>Email</th>
-                                    <th>Status</th>
-                                    <th>In Response to</th>
+                                    <th>Role</th>
                                     <th>Date</th>
-                                    <th>Approve</th>
-                                    <th>Unapprove</th>
-                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
 <?php
 // getting everything from table called comments
-$query = "SELECT * FROM comments ";
-$query .= "ORDER BY comment_date DESC ";
+$query = "SELECT * FROM users ";
+
 $show_all = mysqli_query($connect, $query);
 // assigning everything returned from comments into variables
 while ($row = mysqli_fetch_assoc($show_all)) {
-    $id = $row['comment_id'];
-    $author = $row['comment_author'];
-    $comment = $row['comment_content'];
-    $email = $row['comment_email'];
-    $status = $row['comment_status'];
-    $response = $row['comment_post_id'];
-    $date = $row['comment_date'];
+    $id = $row['user_id'];
+    $username = $row['username'];
+    $email = $row['email'];
+    $first_name = $row['first_name'];
+    $last_name = $row['last_name'];
+    $role = $row['role'];
+    $date = $row['date_added'];
+    $password = $row['password'];
+    $image = $row['user_img'];
 // putting variables into table format 
     echo "<tr>";
     echo "<td>$id</td>";
-    echo "<td>$author</td>";
-    echo "<td>$comment</td>";
+    echo "<td>$username</td>";
+    echo "<td>$first_name</td>";
+    echo "<td>$last_name</td>";
+    echo "<td>$email</td>";
+    echo "<td>$role</td>";
+    echo "<td>$date</td>";
 // selecting all from table comments where the comment_id = $id from comments table
 // $query = "SELECT * FROM categories WHERE cat_id = {$category} ";
 // $select_cat_id = mysqli_query($connect, $query);
@@ -44,24 +47,6 @@ while ($row = mysqli_fetch_assoc($show_all)) {
 
 //     echo "<td>{$cat_title}</td>";
 // }
-
-   
-    echo "<td>$email</td>";
-    echo "<td>$status</td>";
-
-    $query = "SELECT * FROM posts WHERE post_id = $response ";
-    $post_id_query = mysqli_query($connect, $query);
-    while ($row = mysqli_fetch_assoc($post_id_query)) {
-            $post_id = $row['post_id'];
-            $post_title = $row['post_title'];
-                echo "<td><a href = '../../post.php?p_id=$post_id'>$post_title</a></td>";
-    }
-    
-    echo "<td>$date</td>";
-    echo "<td><a href = 'comments.php?approve=$id'>Approve</a></td>";
-    echo "<td><a href = 'comments.php?unapprove=$id'>Unapprove</a></td>";
-    echo "<td><a href = 'comments.php?delete=$id'>Delete</a></td>";
-    echo "</tr>";
 }
 ?>
                                 </tr>
