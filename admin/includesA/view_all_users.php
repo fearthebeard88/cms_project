@@ -37,6 +37,7 @@ while ($row = mysqli_fetch_assoc($show_all)) {
     echo "<td>$email</td>";
     echo "<td>$role</td>";
     echo "<td>$date</td>";
+    echo "<td><a href = 'users.php?delete={$id}'>Delete</a></td>";
 // selecting all from table comments where the comment_id = $id from comments table
 // $query = "SELECT * FROM categories WHERE cat_id = {$category} ";
 // $select_cat_id = mysqli_query($connect, $query);
@@ -58,9 +59,9 @@ while ($row = mysqli_fetch_assoc($show_all)) {
 if (isSet($_GET['delete'])) {
     $id = $_GET['delete'];
 
-$query = "DELETE FROM comments WHERE comment_id = {$id} ";
+$query = "DELETE FROM users WHERE user_id = {$id} ";
 $delete = mysqli_query($connect, $query);
-header("Location: comments.php");
+header("Location: users.php");
 }
 
 if (isSet($_GET['unapprove'])) {
