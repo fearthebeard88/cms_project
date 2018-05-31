@@ -16,7 +16,7 @@ if(isSet($_POST['create'])) {
     move_uploaded_file($post_image_temp, "../../images/$post_image");
     // adding into posts table
     $query = "INSERT INTO posts(post_cat_id, post_title, post_author, post_date, post_img, post_content, post_tags, post_status) ";
-    $query .= "VALUES('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_tags}', '{$post_status}', '{$post_content}' ) ";
+    $query .= "VALUES('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_status}' ) ";
     $create = mysqli_query($connect, $query);
     echo "Post Added";
 
