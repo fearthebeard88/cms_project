@@ -9,6 +9,7 @@
                                     <th>Date</th>
                                     <th>To Admin</th>
                                     <th>To Subscriber</th>
+                                    <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
@@ -40,6 +41,7 @@ while ($row = mysqli_fetch_assoc($show_all)) {
     echo "<td>$date</td>";
     echo "<td><a href='users.php?change_admin={$id}'>Make Admin</td>";
     echo "<td><a href='users.php?change_sub={$id}'>Make Subscriber</td>";
+    echo "<td><a href='users.php?source=edit_user&edit={$id}'>Edit</a></td>";
     echo "<td><a href = 'users.php?delete={$id}'>delete</a></td>";
 // selecting all from table comments where the comment_id = $id from comments table
 // $query = "SELECT * FROM categories WHERE cat_id = {$category} ";
